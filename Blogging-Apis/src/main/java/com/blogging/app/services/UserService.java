@@ -1,8 +1,8 @@
 package com.blogging.app.services;
 
 import java.util.List;
-
 import com.blogging.app.payloads.UserDto;
+
 
 public interface UserService {
 	UserDto createUser(UserDto user);
