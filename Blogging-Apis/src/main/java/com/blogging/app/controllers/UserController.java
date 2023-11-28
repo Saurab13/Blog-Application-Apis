@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,10 @@ import com.blogging.app.payloads.ApiResponse;
 import com.blogging.app.payloads.UserDto;
 import com.blogging.app.services.UserService;
 
+import jakarta.validation.Valid;
+
+
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -27,14 +32,15 @@ public class UserController {
 
 	// POST-create user
 	@PostMapping("/")
-	public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
+	public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
 		UserDto createUserDto = this.userService.createUser(userDto);
 		return new ResponseEntity<>(createUserDto, HttpStatus.CREATED);
 	}
 
 	// PUT-update user
 	@PutMapping("/{userId}")
-	public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto, @PathVariable("userId") Integer userId) {
+	public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UserDto userDto,
+			@PathVariable("userId") Integer userId) {
 
 		UserDto updatedUser = this.userService.updataUser(userDto, userId);
 		return ResponseEntity.ok(updatedUser);
