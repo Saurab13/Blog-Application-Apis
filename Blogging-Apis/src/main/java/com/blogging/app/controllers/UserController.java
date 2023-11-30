@@ -21,8 +21,6 @@ import com.blogging.app.services.UserService;
 
 import jakarta.validation.Valid;
 
-
-
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
