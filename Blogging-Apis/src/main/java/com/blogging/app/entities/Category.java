@@ -22,6 +22,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Category {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer categoryId;
@@ -35,4 +36,5 @@ public class Category {
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Post> posts = new ArrayList<>();
 
+	
 }
